@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-""""safely get value function"""
-
+'''Task 11
+'''
 from typing import Any, Mapping, Union, TypeVar
 
 
@@ -16,4 +16,4 @@ def safely_get_value(dct: Mapping, key: Any, default: Def = None) -> Res:
         return dct[key]
     else:
         return default
-
+    
