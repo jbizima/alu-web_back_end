@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-""""add a and b function"""
+"""add function"""
 
 
 def add(a: float, b: float) -> float:
-    '''Add two floating numbers'''
+    """Add two numbers"""
     return a + b
-    

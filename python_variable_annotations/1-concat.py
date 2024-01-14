@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-""""add str1 and str2 function"""
+"""concat function"""
 
 
-def concat(str1: string, str2: string) -> str:
-    '''Add or concatenates two strings'''
+def concat(str1: str, str2: str) -> str:
+    """add two strings"""
     return str1 + str2
-    
