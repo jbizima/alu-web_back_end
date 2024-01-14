@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
-'''Task 12
 '''
-from typing import List, Tuple
+Type checking
+'''
+from typing import Tuple, List
 
 
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
-    '''Creates multiple copies of items in a tuple.
-    '''
+    ''' Type checking '''
     zoomed_in: List = [
         item for item in lst
-        for i in range(int(factor))
+        for i in range(factor)
     ]
     return zoomed_in
 
 
-array = (12, 72, 91)
+array = [12, 72, 91]
 
-zoom_2x = zoom_array(array)
+zoom_2x = zoom_array(tuple(array))
 
-zoom_3x = zoom_array(array, 3)
+zoom_3x = zoom_array(tuple(array), int(3.0))
