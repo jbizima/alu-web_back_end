@@ -5,3 +5,4 @@
 def concat(str1: string, str2: string) -> str:
     '''Add or concatenates two strings'''
     return str1 + str2
+    
