@@ -43,18 +43,17 @@ class Server:
             '''Return pagination information
             '''
             assert type(index) == int and type(page_size) == int
-            assert 0 <= index < len(self.dataset())
-            dataset = self.indexed_dataset()
-            data = []
+            assert 0 <= index < len(self.indexed_dataset())
+            next = index + page_size
+            items = []
             next_index = index
-            for _ in range(page_size):
-                while not dataset.get(next_index):
-                    next_index += 1
-                data.append(dataset.get(next_index))
-                next_index += 1
-            return {
-                'index': index,
-                'next_index': next_index,
-                'page_size': page_size,
-                'data': data,
-            }
+            for num in range(index, index + page_size):
+                if not self.indexed_dataset().get(num):
+                    num += 1
+                    next += 1
+                items.append(self.indexed_dataset()[num])
+            return {'next_index': next,
+                    'index': index,
+                    'page_size': page_size,
+                    'data': items
+                }
