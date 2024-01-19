@@ -4,7 +4,7 @@ Return pagination information
 '''
 import csv
 import math
-from typing import List
+from typing import List, Tuple  # Add the Tuple import here
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     '''
@@ -37,17 +37,22 @@ class Server:
         assert type(page) == int and type(page_size) == int
         assert page > 0 and page_size > 0
         start, end = index_range(page, page_size)
-        return self.dataset()[start:end]
+        data = self.dataset()
+        if start > len(data):
+            return []
+        return data[start:end]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Return pagination information
         """
+        data = self.get_page(page, page_size)
+        start, end = index_range(page, page_size)
         total_pages = math.ceil(len(self.dataset()) / page_size)
         return {
-            'page_size': page_size if page < total_pages else 0,
+            'page_size': len(data),
             'page': page,
-            'data': self.get_page(page, page_size),
-            'next_page': page + 1 if page < total_pages else None,
-            'prev_page': page - 1 if page > 1 else None,
+            'data': data,
+            'next_page': page + 1 if end < len(self.__dataset) else None,
+            'prev_page': page - 1 if start > 0 else None,
             'total_pages': total_pages,
         }

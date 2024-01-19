@@ -4,7 +4,7 @@ Find the correct pages to paginate the dataset correctly
 '''
 import csv
 import math
-from typing import List
+from typing import List, Tuple  # Add the Tuple import here
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     '''
@@ -37,4 +37,7 @@ class Server:
         assert type(page) == int and type(page_size) == int
         assert page > 0 and page_size > 0
         start, end = index_range(page, page_size)
-        return self.dataset()[start:end]
+        data = self.dataset()
+        if start > len(data):
+            return []
+        return data[start:end]
