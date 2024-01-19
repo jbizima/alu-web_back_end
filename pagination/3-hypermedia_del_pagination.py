@@ -50,8 +50,9 @@ class Server:
                 num += 1
                 next += 1
             items.append(self.indexed_dataset()[num])
-        return {'next_index': next,
-                'index': index,
-                'page_size': page_size,
-                'data': items
-                }
+        return {
+            'next_index': next,
+            'index': index,
+            'page_size': page_size,
+            'data': items
+        }
