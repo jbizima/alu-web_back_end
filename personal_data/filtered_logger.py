@@ -9,6 +9,7 @@ import mysql.connector
 
 PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
 
+
 def filter_datum(fields: List[str],
                  redaction: str,
                  message: str,
@@ -18,6 +19,7 @@ def filter_datum(fields: List[str],
         message = re.sub(field + "=.*?" + separator,
                          field + "=" + redaction + separator, message)
     return message
+
 
 class RedactingFormatter(logging.Formatter):
     """Redacting Formatter class."""
