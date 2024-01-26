@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
+<<<<<<< HEAD
 '''Measure the runtime'''
+=======
+'''Task 2.
+'''
+>>>>>>> 5c626b3fad84610f777769272a0c38ac716fd55b
 import asyncio
 import time
 from importlib import import_module as using
